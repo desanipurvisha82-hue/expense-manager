@@ -19,15 +19,15 @@ public class UserService {
 
     public User register(RegisterRequest req) {
         User user = User.builder()
-            .name(req.getName())
-            .email(req.getEmail())
-            .password(passwordEncoder.encode(req.getPassword())) // hash it!
-            .build();
+                .name(req.getName())
+                .email(req.getEmail())
+                .password(passwordEncoder.encode(req.getPassword())) // hash it!
+                .build();
         return userRepository.save(user);
     }
 
     public User getByEmail(String email) {
         return userRepository.findByEmail(email)
-            .orElseThrow(() -> new RuntimeException("User not found: " + email));
+                .orElseThrow(() -> new RuntimeException("User not found: " + email));
     }
 }

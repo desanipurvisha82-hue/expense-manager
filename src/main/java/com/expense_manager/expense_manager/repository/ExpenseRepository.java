@@ -10,8 +10,9 @@ import com.expense_manager.expense_manager.entity.User;
 
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
 
-    List<Expense> findByUserOrderByExpenseDateDesc(User user);
-
     List<Expense> findByUserAndExpenseDateBetweenOrderByExpenseDateDesc(
-            User user, LocalDate from, LocalDate to);
+            User user,
+            LocalDate start,
+            LocalDate end
+    );
 }
