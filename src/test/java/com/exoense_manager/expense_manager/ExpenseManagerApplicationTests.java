@@ -1,4 +1,4 @@
-package com.exoense_manager.expense_manager;
+package com.expense_manager.expense_manager;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
