@@ -141,3 +141,4 @@ jobs:
         uses: zaproxy/action-baseline@v0.12.0
         with:
           target: 'https://expense-manager-nnor.onrender.com/dashboard'
+          allow_issue_writing: false
