@@ -127,7 +127,10 @@ jobs:
         run: |
           cosign sign --yes ghcr.io/${{ github.repository }}/expense-manager:latest
 
-            zap-scan:
+  # =========================
+  # 5) OWASP ZAP Scan
+  # =========================
+  zap-scan:
     name: OWASP ZAP Scan
     runs-on: ubuntu-latest
 
