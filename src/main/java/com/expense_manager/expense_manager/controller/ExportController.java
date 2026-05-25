@@ -39,14 +39,14 @@ public class ExportController {
         byte[] body = expenseService.buildCsv(expenses).getBytes(StandardCharsets.UTF_8);
 
         return ResponseEntity.ok()
-            .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=expenses-" + ym + ".csv")
-            .contentType(MediaType.parseMediaType("text/csv"))
-            .body(body);
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=expenses-" + ym + ".csv")
+                .contentType(MediaType.parseMediaType("text/csv"))
+                .body(body);
     }
 
     @PostMapping("/expenses/email")
     public String emailReport(@RequestParam String ym, @RequestParam String to,
-                              Principal principal, RedirectAttributes ra) {
+            Principal principal, RedirectAttributes ra) {
         User user = userService.getByEmail(principal.getName());
         YearMonth yearMonth = YearMonth.parse(ym);
         List<Expense> expenses = expenseService.listForUserInMonth(user, yearMonth);
@@ -56,10 +56,10 @@ public class ExportController {
         try {
             emailService.sendReport(to, label, expenseService.buildCsv(expenses), total, user.getName());
             ra.addFlashAttribute("message", "Report for " + label + " sent to " + to);
-        }  catch (Exception e) {
-    e.printStackTrace();   // prints the real SMTP error to Render logs
-    ra.addFlashAttribute("error", "Couldn't send email — " + e.getMessage());
-}
+        } catch (Exception e) {
+            e.printStackTrace(); // prints the real SMTP error to Render logs
+            ra.addFlashAttribute("error", "Couldn't send email — " + e.getMessage());
+        }
         return "redirect:/dashboard?ym=" + ym;
     }
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,27 +8,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" th:href="@{/css/app.css}">
 </head>
-<body>
-<div class="auth-wrap">
-    <div class="auth-card">
-        <h1>Welcome back 👋</h1>
-        <div class="alert alert-success" th:if="${param.registered}">Account created — please log in.</div>
-        <div class="alert alert-success" th:if="${param.logout}">You've been logged out.</div>
-        <div class="alert alert-danger" th:if="${param.error}">Invalid email or password.</div>
 
-        <form th:action="@{/login}" method="post">
-            <div class="field">
-                <label>Email</label>
-                <input type="email" name="username" required>
-            </div>
-            <div class="field">
-                <label>Password</label>
-                <input type="password" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Login</button>
-        </form>
-        <p class="auth-foot">No account? <a th:href="@{/register}">Register here</a></p>
-    </div>
+<body>
+    <div class="auth-wrap">
+        <div class="auth-card">
+            <div class="brand">
+    <div class="logo">💰</div>
+    <div class="name">Expense Manager</div>
 </div>
+            <h1>Welcome back 👋</h1>
+            <div class="alert alert-success" th:if="${param.registered}">Account created — please log in.</div>
+            <div class="alert alert-success" th:if="${param.logout}">You've been logged out.</div>
+            <div class="alert alert-danger" th:if="${param.error}">Invalid email or password.</div>
+
+            <form th:action="@{/login}" method="post">
+                <div class="field">
+                    <label>Email</label>
+                    <input type="email" name="username" required>
+                </div>
+                <div class="field">
+                    <label>Password</label>
+                    <input type="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p class="auth-foot">No account? <a th:href="@{/register}">Register here</a></p>
+        </div>
+    </div>
 </body>
+
 </html>
